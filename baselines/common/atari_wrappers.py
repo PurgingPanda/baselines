@@ -1,5 +1,8 @@
 import numpy as np
 import os
+
+from .custom_wrapper import BreakoutRandomBackgroundWrapper
+
 os.environ.setdefault('PATH', '')
 from collections import deque
 import gym
@@ -275,6 +278,10 @@ def make_atari(env_id, max_episode_steps=None):
 def wrap_deepmind(env, episode_life=True, clip_rewards=True, frame_stack=False, scale=False):
     """Configure environment for DeepMind-style Atari.
     """
+
+    if os.environ['Breakout-Random-Background']:
+        print("!!! Added breakout random BG color wrapper!")
+        env = BreakoutRandomBackgroundWrapper(env)
     if episode_life:
         env = EpisodicLifeEnv(env)
     if 'FIRE' in env.unwrapped.get_action_meanings():
