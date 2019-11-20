@@ -279,7 +279,7 @@ def wrap_deepmind(env, episode_life=True, clip_rewards=True, frame_stack=False, 
     """Configure environment for DeepMind-style Atari.
     """
 
-    if os.environ['Breakout-Random-Background']:
+    if os.environ['BreakoutRandomBackground']:
         print("!!! Added breakout random BG color wrapper!")
         env = BreakoutRandomBackgroundWrapper(env)
     if episode_life:
