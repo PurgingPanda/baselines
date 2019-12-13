@@ -136,3 +136,4 @@ class BreakoutRandomBackgroundWrapper(gym.Wrapper):
         added = np.stack((mask * r, mask * g, mask * b), axis=2)
 
         return np.add(img, added).astype(np.uint8)
+

@@ -1,6 +1,7 @@
 import numpy as np
 import os
 
+from .AddNoiseToObsWrapper import AddNoiseToObsWrapper
 from .custom_wrapper import BreakoutRandomBackgroundWrapper
 
 os.environ.setdefault('PATH', '')
@@ -279,9 +280,12 @@ def wrap_deepmind(env, episode_life=True, clip_rewards=True, frame_stack=False, 
     """Configure environment for DeepMind-style Atari.
     """
 
-    if os.environ['BreakoutRandomBackground']:
+    if 'BreakoutRandomBackground' in os.environ:
         print("!!! Added breakout random BG color wrapper!")
         env = BreakoutRandomBackgroundWrapper(env)
+    if 'BreakoutRandomNoise' in os.environ:
+        print("!!! Added breakout random noise!")
+        env = AddNoiseToObsWrapper(env)
     if episode_life:
         env = EpisodicLifeEnv(env)
     if 'FIRE' in env.unwrapped.get_action_meanings():

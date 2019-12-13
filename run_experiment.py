@@ -25,9 +25,9 @@ if __name__ == "__main__":
             os.environ["BreakoutRandomBackground"] = str(amtColors)
             loadName = 'Breakout-run'+ str(run) + '_' + str(amtColors) + 'colors'
             saveName = 'Breakout-run'+ str(run) + '_' + str(amtColors*2) + 'colors'
-            baseParams[4] = '--save-path=modelsBash/' + saveName + '.pkl'
-            baseParams[6] = '--load-path=logsBash/' + loadName
-            baseParams[5] = '--log-path=logsBash/' + saveName
+            baseParams[4] = '--save_path=modelsBash/' + saveName + '.pkl'
+            baseParams[6] = '--load_path=logsBash/' + loadName
+            baseParams[5] = '--log_path=logsBash/' + saveName
             file.write("export BreakoutRandomBackground=" + str(amtColors*2))
             file.write("\n")
             file.write("python run.py " + " ".join(baseParams[1:]))
